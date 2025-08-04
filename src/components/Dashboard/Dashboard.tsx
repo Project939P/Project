@@ -21,75 +21,75 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Your Learning Dashboard</h1>
+        <h1 className="apple-text-large">Your Learning Dashboard</h1>
         <VideoSearchToggle />
       </div>
 
       {/* Stats cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatsCard 
           title="Watch Time"
           value={formatWatchTime(userStats.totalWatchTime)}
-          icon={<Clock className="h-8 w-8 text-blue-500" />}
-          color="bg-blue-100 dark:bg-blue-900"
+          icon={<Clock className="h-10 w-10 text-blue-500" />}
+          color="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800"
         />
         <StatsCard 
           title="Completed"
           value={`${userStats.completedVideos} videos`}
-          icon={<CheckCircle className="h-8 w-8 text-green-500" />}
-          color="bg-green-100 dark:bg-green-900"
+          icon={<CheckCircle className="h-10 w-10 text-green-500" />}
+          color="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900 dark:to-green-800"
         />
         <StatsCard 
           title="Current Streak"
           value={`${userStats.currentStreak} days`}
-          icon={<Flame className="h-8 w-8 text-orange-500" />}
-          color="bg-orange-100 dark:bg-orange-900"
+          icon={<Flame className="h-10 w-10 text-orange-500" />}
+          color="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900 dark:to-orange-800"
         />
         <StatsCard 
           title="Longest Streak"
           value={`${userStats.longestStreak} days`}
-          icon={<BarChart className="h-8 w-8 text-purple-500" />}
-          color="bg-purple-100 dark:bg-purple-900"
+          icon={<BarChart className="h-10 w-10 text-purple-500" />}
+          color="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800"
         />
       </div>
 
       {/* Content area */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Search or Recent Videos */}
         <div className="lg:col-span-2">
           {isSearching ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-              <div className="flex items-center mb-4">
-                <Search className="h-5 w-5 mr-2 text-indigo-500" />
-                <h2 className="text-xl font-semibold">Find Videos</h2>
+            <div className="apple-card p-8 hover-lift">
+              <div className="flex items-center mb-6">
+                <Search className="h-6 w-6 mr-3 text-black dark:text-white" />
+                <h2 className="apple-text-medium">Find Videos</h2>
               </div>
               <SearchVideos />
             </div>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-              <div className="flex items-center mb-4">
-                <Play className="h-5 w-5 mr-2 text-indigo-500" />
-                <h2 className="text-xl font-semibold">Recent Videos</h2>
+            <div className="apple-card p-8 hover-lift">
+              <div className="flex items-center mb-6">
+                <Play className="h-6 w-6 mr-3 text-black dark:text-white" />
+                <h2 className="apple-text-medium">Recent Videos</h2>
               </div>
               <RecentVideos />
             </div>
           )}
 
           {/* Progress chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mt-6">
-            <div className="flex items-center mb-4">
-              <BarChart className="h-5 w-5 mr-2 text-indigo-500" />
-              <h2 className="text-xl font-semibold">Learning Progress</h2>
+          <div className="apple-card p-8 mt-8 hover-lift">
+            <div className="flex items-center mb-6">
+              <BarChart className="h-6 w-6 mr-3 text-black dark:text-white" />
+              <h2 className="apple-text-medium">Learning Progress</h2>
             </div>
             <ProgressStats />
           </div>
         </div>
 
         {/* Calendar events */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-          <div className="flex items-center mb-4">
-            <CalendarIcon className="h-5 w-5 mr-2 text-indigo-500" />
-            <h2 className="text-xl font-semibold">Upcoming Reminders</h2>
+        <div className="apple-card p-8 hover-lift">
+          <div className="flex items-center mb-6">
+            <CalendarIcon className="h-6 w-6 mr-3 text-black dark:text-white" />
+            <h2 className="apple-text-medium">Upcoming Reminders</h2>
           </div>
           <UpcomingReminders />
         </div>
@@ -108,13 +108,13 @@ interface StatsCardProps {
 
 const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon, color }) => {
   return (
-    <div className={`${color} rounded-lg p-4 shadow-md flex items-center`}>
-      <div className="rounded-full p-3 mr-3 bg-white dark:bg-gray-800">
+    <div className={`${color} rounded-3xl p-6 shadow-lg flex items-center hover-lift transition-all duration-300`}>
+      <div className="rounded-2xl p-4 mr-4 bg-white dark:bg-gray-900 shadow-sm">
         {icon}
       </div>
       <div>
-        <p className="text-sm font-medium opacity-70">{title}</p>
-        <p className="text-xl font-bold">{value}</p>
+        <p className="apple-text-caption font-medium opacity-70">{title}</p>
+        <p className="apple-text-medium font-bold">{value}</p>
       </div>
     </div>
   );
